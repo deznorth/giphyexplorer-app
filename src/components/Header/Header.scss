@@ -1,0 +1,151 @@
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-02-05 18:42:33 
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-02-13 20:07:00
+*/
+@import '../../colors';
+
+$media-max-width: 1024px;
+
+@media (min-width: $media-max-width){
+    .header{
+        padding: .67rem 8rem;
+
+        .upper{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            span{
+                display: none;
+            }
+            h1{
+                margin-left: 2rem;
+            }
+            a{
+                color: $color-primary;
+                text-decoration: none;
+                margin: 0 2rem;
+                font-size: 1.2rem;
+                font-family: 'Righteous', cursive;
+
+                &.devlink{
+                    background-color: $color-secondary;
+                    color: $color-fnt-dark;
+                    padding: 8px 16px;
+                    
+                    &:hover{
+                        color: $color-fnt-default;
+                        background-color: darken($color-secondary, 20);
+                    }
+
+                    &:active{
+                        color: $color-fnt-dark;
+                        background-color: lighten($color-secondary, 20);
+                    }
+                }
+
+                &:hover{
+                    color: lighten($color-primary, 35);
+                }
+
+                &:active{
+                    color: darken($color-primary, 35);
+                }
+            }
+        }
+
+        .lower{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+
+            h2{
+                color: $color-fnt-default;
+            }
+        }
+    }
+}
+
+@media (max-width: $media-max-width){
+    .header{
+        .upper{
+            display: flex;
+            height: 95px;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            span{
+
+                margin-left: 1rem;
+            }
+            h1{
+                margin-left: auto;
+                margin-right: auto;
+            }
+            ul{
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                padding: 10vh 0 10vh 0;
+                position: fixed;
+                top: 103px;
+                left: 0;
+                background-color: #259973;
+                width: 0;
+                height: 100vh;
+                text-align: center;
+                overflow-x: hidden;
+                transition: 0.3s ease-out;
+
+                &.open{
+                    width: 200px;
+                }
+                
+                a{
+                    color: $color-fnt-default;
+                    text-decoration: none;
+                    margin: 1.2rem 2rem;
+                    font-size: 1.2rem;
+                    font-family: 'Righteous', cursive;
+        
+                    &.devlink{
+                        background-color: $color-bg-secondary;
+                        color: $color-fnt-default;
+                        padding: 8px 16px;
+                        margin-top: 15vh;
+                        
+                        &:hover{
+                            color: $color-fnt-default;
+                            background-color: darken($color-secondary, 20);
+                        }
+        
+                        &:active{
+                            color: $color-fnt-dark;
+                            background-color: lighten($color-secondary, 20);
+                        }
+                    }
+        
+                    &:hover{
+                        color: $color-fnt-dark;
+                    }
+        
+                    &:active{
+                        color: darken($color-fnt-dark, 35);
+                    }
+                }
+            }
+        }
+        .lower{
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            padding: 0 2rem;
+            h2{
+                color: $color-fnt-default;
+            }
+        }
+    }
+}

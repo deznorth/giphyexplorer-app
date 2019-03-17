@@ -1,0 +1,42 @@
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-02-05 17:53:14 
+ * @Last Modified by: David M. Rojas Gonzalez // deznorth.com
+ * @Last Modified time: 2019-02-19 13:14:54
+ */
+
+@import './colors';
+@import './dimensions';
+@import url('https://fonts.googleapis.com/css?family=Righteous|Roboto');
+
+body{
+  background-color: $color-bg-primary;
+  color: $color-fnt-default;
+  font-family: 'Roboto', sans-serif;
+}
+
+@for $i from 1 through 6 {
+  h#{$i}{
+    font-family: 'Righteous', cursive;
+  }
+}
+
+h1{color: $color-fnt-h1;}
+h2{color: $color-fnt-h2;}
+h3{color: $color-fnt-h3;}
+
+hr{
+  border-color: $color-primary;
+}
+
+#PageWrapper{
+  display: flex;
+  justify-content: center;
+}
+
+#ContentWrapper{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

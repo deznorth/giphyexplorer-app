@@ -1,0 +1,46 @@
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-02-09 02:18:06 
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-02-13 17:46:36
+*/
+@import '../../colors';
+
+$media-max-width: 480px;
+
+$input-width-default: 250px;
+$input-width-min: 180px;
+$input-margin-right: 8px;
+
+
+
+.searchBar{
+
+    input{
+        padding: 8px 16px;
+        border: none;
+        margin-right: $input-margin-right;
+        width: $input-width-default;
+        @media (max-width: $media-max-width){
+            width: $input-width-min;
+        }
+    }
+    button{
+        border: none;
+        background-color: $color-secondary;
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        color: $color-fnt-dark;
+        padding: 8px 16px;
+        
+        &:hover{
+            color: $color-fnt-default;
+            background-color: darken($color-secondary, 20);
+        }
+
+        &:active{
+            color: $color-fnt-dark;
+            background-color: lighten($color-secondary, 20);
+        }
+    }
+}

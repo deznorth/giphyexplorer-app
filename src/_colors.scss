@@ -1,0 +1,31 @@
+/*
+ * @Author: David M. Rojas Gonzalez // davidr.info 
+ * @Date: 2019-02-05 17:43:29 
+ * @Last Modified by: David M. Rojas Gonzalez // deznorth.com
+ * @Last Modified time: 2019-02-19 14:03:11
+*/
+
+//Color Palette
+
+/* Initial Theme
+$color-primary: #3dffc0;
+$color-secondary: #c367b3;
+*/
+
+/* This is a really good theme */
+$color-primary: #ffbb3d;
+$color-secondary: #3798f3;
+
+//Background colors
+ $color-bg-primary: #313c4e;
+ $color-bg-secondary: #3a4453;
+
+ //Font Colors
+ $color-fnt-default: #fff;
+ $color-fnt-muted: #aaa;
+ $color-fnt-dark: #3b3b3b;
+ $color-fnt-navlink: $color-primary;
+
+ $color-fnt-h1: $color-primary;
+ $color-fnt-h2: darken($color-primary, 7.5);
+ $color-fnt-h3: darken($color-primary, 15);

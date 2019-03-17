@@ -1,0 +1,30 @@
+/*
+ * @Author: David M. Rojas Gonzalez // deznorth.com 
+ * @Date: 2019-02-19 13:05:47 
+ * @Last Modified by: David M. Rojas Gonzalez // deznorth.com
+ * @Last Modified time: 2019-02-19 13:39:43
+*/
+@import '../../colors';
+
+.displayCard{
+    display: inline-block;
+    width: 250px;
+    background-color: darken($color-bg-primary, 5);
+    padding: 1rem .2rem;
+    margin: .5rem 0;
+    border-radius: 8px;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        img{ 
+            margin: auto;
+            border-radius: 4px;
+        }
+    }
+
+}
