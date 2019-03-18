@@ -1,6 +1,5 @@
 import React from 'react';
 import DisplayCard from '../components/DisplayCard/DisplayCard';
-import Pagination from '../components/Pagination/Pagination';
 
 class Home extends React.Component {
 
@@ -30,10 +29,6 @@ class Home extends React.Component {
         this.setState(() => ({ initialized: true, data: gifs}));
     }
 
-    HandlePageSwitch = (e) => {
-        console.log(`clicked button # ${e.target.textContent}`);
-    }
-
     render () {
         let gifs = (<div>Loading...</div>);
         if(this.state.initialized === false){
@@ -45,7 +40,6 @@ class Home extends React.Component {
         return (
         <div id="ContentWrapper">
             {gifs}
-            <Pagination current={this.state.pageNumber} pageSwitch={this.HandlePageSwitch}/>
         </div>
         );
     }
