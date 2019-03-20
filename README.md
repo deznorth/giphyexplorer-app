@@ -15,34 +15,35 @@ That way the API key remains in my backend as an environment variable and is not
 Below is a To-do list of the progress so far. You can also view the Trello Board [here](https://trello.com/b/4ZiXAIdd) 
 
 ### Road to v1.0.0
-- [x] Adobe XD Design
-- [x] Essential Components (Header { Navigation, SearchBar })
-- [x] 404 Route
+- [x] **Adobe XD Design**
+- [x] **Essential Components (Header { Navigation, SearchBar })**
+- [x] **404 Route**
   - [x] Setup Route
   - [x] Basic Structure and Styling
-- [x] Home Page
+- [x] **Home Page**
   - [x] Setup route
   - [x] Create Basic 'GifDisplay' component
   - [x] Display dummy data
   - [x] Display data from the API
-- [x] Search Results Route
+- [x] **Search Results Route**
   - [x] Setup Route
   - [x] Get query from the search bar
   - [x] Redirect to the /results route
   - [x] Get data from the API
   - [x] Display the gifs
-- [ ] About Page
+- [x] **Re-structured the app to use Redux**
+- [ ] **About Page**
   - [x] Setup Route
   - [ ] Write the content of the page
     - [ ] Tech Stack
     - [ ] Description
     - [ ] Process
   - [ ] Structure and Style the page
-- [ ] Random Page
+- [ ] **Random Page**
   - [x] Setup Route
   - [ ] Get data from the API
   - [ ] Display the data
-- [ ] Implementing pagination
+- [ ] **Implementing pagination**
 
 ### Projected Features
 - [ ] Details Route
