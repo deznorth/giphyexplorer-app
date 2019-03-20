@@ -2,10 +2,12 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-02-09 02:18:13 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-15 03:13:18
+ * @Last Modified time: 2019-03-20 17:10:23
  */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import './Header.scss';
 import '../searchBar/SearchBar';
 import SearchBar from '../searchBar/SearchBar';
@@ -36,11 +38,19 @@ const Header = (props) => {
             </div>
             <hr/>
             <div className="lower">
-                <h2>{props.message ? props.message : ""}</h2>
-                <SearchBar updateMessage={props.updateMessage} />
+                <h2>{props.message}</h2>
+                <SearchBar />
             </div>
         </div>
     );
 }
 
-export default Header;
+Header.propTypes = {
+    message: PropTypes.string.isRequired
+}
+
+const mapStateToProps = state => ({
+    message: state.header.message
+});
+
+export default connect(mapStateToProps)(Header);

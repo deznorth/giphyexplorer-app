@@ -2,10 +2,13 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-02-09 02:18:19 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-17 14:09:51
+ * @Last Modified time: 2019-03-20 18:10:26
  */
 import  React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { updateQuery } from '../../actions/headerActions';
 import './SearchBar.scss';
 
 //Come Back to this, functionality is not there yet
@@ -13,40 +16,38 @@ import './SearchBar.scss';
 class SearchBar extends Component {
 
     state = {
-        redirect: null
+        query: ''
     }
 
+    handleInput = (e) => {
+        const target = e.target;
+        this.setState({ [target.name]: target.value});
+    }
 
-    getSearch = async (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
-        const query = e.target.elements.query.value;
-
-        this.props.updateMessage(`Search: ${query}`);
-
-        this.setState({
-            redirect: <Redirect to={`/results/${query}`}/>
-        });
+        this.props.updateQuery(this.state.query);
+        this.props.history.replace(`/results/${this.state.query}`);
     }
 
     render(){
-        setTimeout(() => {
-            if(this.state.redirect != null){
-                this.setState({
-                    redirect: null
-                });
-            }
-        }, 200);
-
         return (
             <div className="searchBar">
-                { this.state.redirect}
-                <form onSubmit={this.getSearch}>
-                    <input type="text" placeholder="Search" name="query"/>
-                    <button type="submit" >Find</button>
+                <form onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleInput} type="text" placeholder="Search" name="query"/>
+                    <button type="submit">Find</button>
                 </form>
             </div>
         );
     }
 }
 
-export default SearchBar;
+SearchBar.propTypes = {
+    updateQuery: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => ({
+    query: state.header.query
+});
+
+export default connect(mapStateToProps, { updateQuery })(withRouter(SearchBar));

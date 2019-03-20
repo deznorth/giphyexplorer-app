@@ -2,11 +2,14 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-02-09 02:18:16 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-17 14:17:09
+ * @Last Modified time: 2019-03-20 17:38:53
  */
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
+import { Provider } from 'react-redux';
+import store from './store';
+
 import Header from './components/Header/Header';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
@@ -16,32 +19,24 @@ import Results from './pages/Results';
 
 class App extends Component {
 
-  state = {
-    headerMessage: 'All Gifs!'
-  }
-
-  updateMessage = (message) => {
-    this.setState({
-      headerMessage: message
-    });
-  }
-
   render() {
     return (
-      <BrowserRouter>
-        <div>
-          <Header message={this.state.headerMessage} updateMessage={this.updateMessage} />
-          <div id="PageWrapper">
-            <Switch>
-              <Route path="/" component={Home} exact />
-              <Route path="/about" component={About} exact />
-              <Route path="/random" component={Random} exact />
-              <Route path="/results/:query" component={Results} exact />
-              <Route component={ErrorPage} />
-            </Switch>
+      <Provider store={store}>
+        <BrowserRouter>
+          <div>
+            <Header />
+            <div id="PageWrapper">
+              <Switch>
+                <Route path="/" component={Home} exact />
+                <Route path="/about" component={About} exact />
+                <Route path="/random" component={Random} exact />
+                <Route path="/results/:query" component={Results} exact />
+                <Route component={ErrorPage} />
+              </Switch>
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }

@@ -1,41 +1,32 @@
-import React from 'react';
+/*
+* @Author: David M. Rojas Gonzalez // davidr.info  
+* @Date: 2019-03-20 16:35:05  
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-20 17:31:32
+*/
+
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchTrending } from '../actions/gifActions';
+import { setMessage } from '../actions/headerActions';
 import DisplayCard from '../components/DisplayCard/DisplayCard';
 
-class Home extends React.Component {
+class Home extends Component {
 
-    state = {
-        initialized: false,
-        data: {},
-        pageNumber: 0
-    }
-
-    getHome = async () => {
-        const api_call = await fetch(`/api/getTrending?pageNumber=${this.state.pageNumber}`);
-        const data = await api_call.json();
-
-        const gifs = [];
-
-        data.data.forEach(element => {
-            gifs.push(
-                <DisplayCard 
-                    key={element.id} 
-                    title={element.title} 
-                    url={element.images.fixed_width_downsampled.url}
-                />
-                );
-        });
-
-        //console.log(data);
-        this.setState(() => ({ initialized: true, data: gifs}));
+    componentDidMount(){
+        this.props.setMessage('All Gifs!');
+        this.props.fetchTrending();
     }
 
     render () {
-        let gifs = (<div>Loading...</div>);
-        if(this.state.initialized === false){
-            this.getHome();
-        } else {
-            gifs = this.state.data;
-        }        
+        const gifs = this.props.gifs.map(gif => (
+            <DisplayCard 
+                    key={gif.id} 
+                    title={gif.title} 
+                    url={gif.images.fixed_width_downsampled.url}
+            />
+        ));
 
         return (
         <div id="ContentWrapper">
@@ -45,4 +36,14 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+Home.propTypes = {
+    setMessage: PropTypes.func.isRequired,
+    fetchTrending: PropTypes.func.isRequired,
+    gifs: PropTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+    gifs: state.gifs.items
+});
+
+export default connect(mapStateToProps, { fetchTrending, setMessage })(Home);
