@@ -8,6 +8,8 @@ import RandomDisplay from '../components/RandomDisplay/RandomDisplay';
 class Random extends Component {
 
     componentDidMount(){
+        const sideMenu = document.querySelector("ul");
+        sideMenu.classList.remove("open");
         this.props.setMessage('Random');
         this.props.fetchRandom();
     }

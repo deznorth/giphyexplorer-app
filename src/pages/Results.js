@@ -2,7 +2,7 @@
 * @Author: David M. Rojas Gonzalez // davidr.info  
 * @Date: 2019-03-20 16:34:51  
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-20 21:31:18
+ * @Last Modified time: 2019-03-21 03:48:09
 */
 
 import React, { Component } from 'react';
@@ -16,6 +16,8 @@ import DisplayCard from '../components/DisplayCard/DisplayCard';
 class Results extends Component {
 
     componentDidMount(){
+        const sideMenu = document.querySelector("ul");
+        sideMenu.classList.remove("open");
         const windowQuery = window.location.pathname.replace('/results/', '');
         
         /*

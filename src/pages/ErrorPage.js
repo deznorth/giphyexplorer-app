@@ -1,17 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setMessage } from '../actions/headerActions';
 
-const ErrorPage = props => {
+class ErrorPage extends Component {
 
-    props.setMessage('Error');
+    componentDidMount(){
+        const sideMenu = document.querySelector("ul");
+        sideMenu.classList.remove("open");
+        this.props.setMessage('Error');
+    }
 
-    return (
-        <div id="ContentWrapper">
-            ErrorPage
-        </div>
-    );
+    render(){
+        return (
+            <div id="ContentWrapper">
+                ErrorPage
+            </div>
+        );
+    }
 }
 
 ErrorPage.propTypes = {

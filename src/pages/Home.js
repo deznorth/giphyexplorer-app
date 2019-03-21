@@ -2,7 +2,7 @@
 * @Author: David M. Rojas Gonzalez // davidr.info  
 * @Date: 2019-03-20 16:35:05  
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-20 21:30:16
+ * @Last Modified time: 2019-03-21 03:47:38
 */
 
 import React, { Component } from 'react';
@@ -15,6 +15,8 @@ import DisplayCard from '../components/DisplayCard/DisplayCard';
 class Home extends Component {
 
     componentDidMount(){
+        const sideMenu = document.querySelector("ul");
+        sideMenu.classList.remove("open");
         this.props.setMessage('All Gifs!');
         this.props.fetchTrending();
     }
