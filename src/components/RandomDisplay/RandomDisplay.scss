@@ -2,13 +2,24 @@
 * @Author: David M. Rojas Gonzalez // davidr.info  
 * @Date: 2019-03-20 21:08:16  
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-20 21:18:07
+ * @Last Modified time: 2019-03-21 04:00:46
 */
 
+@import '../../dimensions';
+
 .RandomDisplay{
+    margin: 0 auto;
+    text-align: center;
     h2{
         font-family: 'Roboto', sans-serif;
         text-transform: capitalize;
         color: white;
+    }
+
+    @media (max-width: $brk-sm){
+        max-width: 70%;
+        img{
+            max-width: 100%;
+        }
     }
 }
