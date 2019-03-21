@@ -1,7 +1,8 @@
-import { FETCH_TRENDING, FETCH_SEARCH } from '../actions/types';
+import { FETCH_TRENDING, FETCH_SEARCH, FETCH_RANDOM } from '../actions/types';
 
 const initialState = {
-    items: []
+    items: [],
+    item: {}
 };
 
 export default function(state = initialState, action){
@@ -15,6 +16,11 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 items: action.payload
+            };
+        case FETCH_RANDOM:
+            return {
+                ...state,
+                item: action.payload
             };
         default:
             return state;

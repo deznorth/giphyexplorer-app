@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setMessage } from '../actions/headerActions';
+import { fetchRandom } from '../actions/gifActions';
+import RandomDisplay from '../components/RandomDisplay/RandomDisplay';
 
-const Random = props => {
+class Random extends Component {
 
-    props.setMessage('Random');
+    componentDidMount(){
+        this.props.setMessage('Random');
+        this.props.fetchRandom();
+    }
 
-    return (
-        <div id="ContentWrapper">
-            Random
-        </div>
-    );
+    render(){        
+
+        return (
+            <div id="RandomWrapper">
+                <RandomDisplay {...this.props.gif} />
+            </div>
+        );
+    }
 }
 
 Random.propTypes = {
-    setMessage: PropTypes.func.isRequired
+    setMessage: PropTypes.func.isRequired,
+    fetchRandom: PropTypes.func.isRequired,
+    gif: PropTypes.object.isRequired
 }
 
-export default connect(null, { setMessage })(Random);
+const mapStateToProps = state => ({
+    gif: state.gifs.item
+});
+
+export default connect(mapStateToProps, { setMessage, fetchRandom })(Random);

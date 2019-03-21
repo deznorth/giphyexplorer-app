@@ -2,7 +2,7 @@
 * @Author: David M. Rojas Gonzalez // davidr.info  
 * @Date: 2019-03-20 16:35:05  
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-20 17:31:32
+ * @Last Modified time: 2019-03-20 21:30:16
 */
 
 import React, { Component } from 'react';
@@ -23,7 +23,7 @@ class Home extends Component {
         const gifs = this.props.gifs.map(gif => (
             <DisplayCard 
                     key={gif.id} 
-                    title={gif.title} 
+                    title={gif.title === '' || gif.title === ' ' ? 'Untitled' : gif.title} 
                     url={gif.images.fixed_width_downsampled.url}
             />
         ));

@@ -39,10 +39,10 @@ Below is a To-do list of the progress so far. You can also view the Trello Board
     - [ ] Description
     - [ ] Process
   - [ ] Structure and Style the page
-- [ ] **Random Page**
+- [x] **Random Page**
   - [x] Setup Route
-  - [ ] Get data from the API
-  - [ ] Display the data
+  - [x] Get data from the API
+  - [x] Display the data
 - [ ] **Implementing pagination**
 
 ### Projected Features

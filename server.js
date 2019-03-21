@@ -44,6 +44,13 @@ app.get('/api/getSearch', async (req,res) => {
     res.json(data);
 });
 
+app.get('/api/getRandom', async (req,res) => {
+    const api_call = await fetch(`http://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`);
+    const data = await api_call.json();
+
+    res.json(data);
+});
+
 //Global Route
 
 app.get('*', (req,res) => {
