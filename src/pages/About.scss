@@ -1,0 +1,52 @@
+/*
+* @Author: David M. Rojas Gonzalez // davidr.info  
+* @Date: 2019-03-21 02:18:41  
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-21 03:44:18
+*/
+
+@import '../colors';
+
+#AboutWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 55%;
+    margin-bottom: 5rem;
+    h1, h2{
+        font-family: 'Roboto', sans-serif;
+        margin-left: -1rem;
+    }
+    p{
+        span{
+            margin-left: -1rem;
+        }
+        a{
+            color: $color-primary;
+            text-decoration: none;
+            &:hover{
+                color: $color-secondary;
+                text-decoration: underline;
+            }
+            &:active{
+                color: darken($color-secondary,20);
+            }
+        }
+    }
+    ul{
+        padding: 0;
+        li{
+            margin-bottom: .5rem;
+            list-style: none;
+            span{
+                color: $color-primary;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    @media (max-width: 600px){
+        width: 82%;
+    }
+}

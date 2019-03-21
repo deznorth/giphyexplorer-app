@@ -2,7 +2,7 @@
  * @Author: David M. Rojas Gonzalez // davidr.info 
  * @Date: 2019-02-09 02:18:16 
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-20 17:38:53
+ * @Last Modified time: 2019-03-21 02:20:03
  */
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -13,7 +13,7 @@ import store from './store';
 import Header from './components/Header/Header';
 import ErrorPage from './pages/ErrorPage';
 import Home from './pages/Home';
-import About from './pages/About';
+import About from './pages/About.jsx';
 import Random from './pages/Random';
 import Results from './pages/Results';
 

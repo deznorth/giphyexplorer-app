@@ -5,13 +5,13 @@ import rootReducer from './reducers';
 const initialState = {};
 
 const middleware = [thunk];
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; //In case the redux extension is not present.
 
 const store = createStore(
     rootReducer,
     initialState,
-    compose(
-        applyMiddleware(...middleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(
+        applyMiddleware(...middleware)
     )
 );
 
