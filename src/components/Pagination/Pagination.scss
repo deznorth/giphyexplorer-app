@@ -1,0 +1,50 @@
+/*
+* @Author: David M. Rojas Gonzalez // davidr.info  
+* @Date: 2019-03-23 15:12:37  
+ * @Last Modified by: David M. Rojas Gonzalez // davidr.info
+ * @Last Modified time: 2019-03-23 16:52:50
+*/
+
+@import '../../colors';
+
+.pagination{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem 1rem 1rem;
+
+
+    ul{
+        padding: 0;
+
+        .current{
+            color: $color-secondary;
+            background-color: rgba(0,0,0,0.4);
+            border: 2px  solid rgba(0,0,0,0.3);
+        }
+
+        button{
+            color: white;
+            font-size: 1rem;
+            padding: .5rem .8rem;
+            background-color: rgba(0,0,0,0.2);
+            border: 2px  solid rgba(0,0,0,0.2);
+            transition: color ease-out .05s, background-color ease-out .05s, transform ease-out .08s;
+            margin: 0 .1rem;
+
+            &:focus{ outline: none }
+            &:not(.current):hover{
+                color: black;
+                background-color: $color-secondary;
+                transform: translateY(-5px);
+                cursor: pointer;
+            }
+            &:not(.current):active{
+                color: white;
+                background-color: darken($color-secondary, 25);
+                transform: translateY(1px);
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
 * @Author: David M. Rojas Gonzalez // davidr.info  
 * @Date: 2019-03-20 16:35:05  
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-21 03:47:38
+ * @Last Modified time: 2019-03-23 15:14:49
 */
 
 import React, { Component } from 'react';
@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { fetchTrending } from '../actions/gifActions';
 import { setMessage } from '../actions/headerActions';
 import DisplayCard from '../components/DisplayCard/DisplayCard';
+import Pagination from '../components/Pagination/Pagination';
 
 class Home extends Component {
 
@@ -31,9 +32,13 @@ class Home extends Component {
         ));
 
         return (
-        <div id="ContentWrapper">
-            {gifs}
+        <div id="HomePage">
+            <div id="ContentWrapper">
+                {gifs}
+            </div>
+            <Pagination />
         </div>
+        
         );
     }
 }

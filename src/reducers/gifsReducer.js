@@ -1,6 +1,7 @@
 import { FETCH_TRENDING, FETCH_SEARCH, FETCH_RANDOM } from '../actions/types';
 
 const initialState = {
+    currentPage: 0,
     items: [],
     item: {}
 };
