@@ -38,7 +38,8 @@ app.get('/api/getTrending', async (req,res) => {
 });
 
 app.get('/api/getSearch', async (req,res) => {
-    const api_call = await fetch(`http://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${req.query.search}`);
+    const pageOffset = req.query.pageNumber ? req.query.pageNumber : 1;
+    const api_call = await fetch(`http://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${req.query.search}&offset=${pageOffset*25}`);
     const data = await api_call.json();
 
     res.json(data);

@@ -2,7 +2,7 @@
 * @Author: David M. Rojas Gonzalez // davidr.info  
 * @Date: 2019-03-20 16:34:51  
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-21 03:48:09
+ * @Last Modified time: 2019-03-25 17:35:48
 */
 
 import React, { Component } from 'react';
@@ -12,6 +12,7 @@ import { fetchSearch } from '../actions/gifActions';
 import { setMessage } from '../actions/headerActions';
 import { updateQuery } from '../actions/headerActions';
 import DisplayCard from '../components/DisplayCard/DisplayCard';
+import Pagination from '../components/Pagination/Pagination';
 
 class Results extends Component {
 
@@ -31,14 +32,17 @@ class Results extends Component {
         const query = this.props.query;
 
         this.props.setMessage(`Search: ${query}`);
-        this.props.fetchSearch(query);
+        this.props.fetchSearch(query, this.props.currentPage);
     }
 
     componentDidUpdate(prevProps){
         if(this.props.query !== prevProps.query){
             const query = this.props.query;
             this.props.setMessage(`Search: ${query}`);
-            this.props.fetchSearch(query);
+            this.props.fetchSearch(query, this.props.currentPage);
+        }
+        if(this.props.currentPage !== prevProps.currentPage){
+            this.props.fetchSearch(this.props.query, this.props.currentPage);;
         }
     }
 
@@ -53,8 +57,11 @@ class Results extends Component {
         ));
 
         return (
-            <div id="ContentWrapper">
-                {gifs}
+            <div id="ResultsPage">
+                <div id="ContentWrapper">
+                    {gifs}
+                </div>
+                <Pagination />
             </div>
         );
     }
@@ -65,12 +72,16 @@ Results.propTypes = {
     setMessage: PropTypes.func.isRequired,
     fetchSearch: PropTypes.func.isRequired,
     query: PropTypes.string.isRequired,
-    gifs: PropTypes.array.isRequired
+    gifs: PropTypes.array.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    totalResults: PropTypes.number.isRequired
 }
 
 const mapStateToProps = state => ({
     query: state.header.query,
-    gifs: state.gifs.items
+    gifs: state.gifs.items,
+    currentPage: state.gifs.currentPage,
+    totalResults: state.gifs.totalResults
 });
 
 export default connect(mapStateToProps, { fetchSearch, setMessage, updateQuery })(Results);

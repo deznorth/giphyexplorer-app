@@ -1,20 +1,33 @@
-import { FETCH_TRENDING, FETCH_SEARCH, FETCH_RANDOM } from '../actions/types';
+import { FETCH_TRENDING, FETCH_SEARCH, FETCH_RANDOM, UPDATE_PAGE } from '../actions/types';
 
-export const fetchTrending = () => dispatch => {
-    fetch(`/api/getTrending?pageNumber=0`)
+export const updatePage = page => dispatch => {
+    dispatch({
+        type: UPDATE_PAGE,
+        payload: page
+    });
+}
+
+export const fetchTrending = (currentPage = 1) => dispatch => {
+    fetch(`/api/getTrending?pageNumber=${currentPage-1}`)
     .then(res => res.json())
     .then(gifs => dispatch({
         type: FETCH_TRENDING,
-        payload: gifs.data
+        payload: { 
+            gifs: gifs.data,
+            totalResults: gifs.pagination.total_count
+        }
     }));
 }
 
-export const fetchSearch = query => dispatch => {
-    fetch(`/api/getSearch?search=${query}`)
+export const fetchSearch = (query, currentPage = 1) => dispatch => {
+    fetch(`/api/getSearch?search=${query}?pageNumber=${currentPage-1}`)
     .then(res => res.json())
     .then(gifs => dispatch({
         type: FETCH_SEARCH,
-        payload: gifs.data
+        payload: { 
+            gifs: gifs.data,
+            totalResults: gifs.pagination.total_count
+        }
     }));
 }
 
