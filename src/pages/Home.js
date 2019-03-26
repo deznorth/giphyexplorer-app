@@ -2,13 +2,13 @@
 * @Author: David M. Rojas Gonzalez // davidr.info  
 * @Date: 2019-03-20 16:35:05  
  * @Last Modified by: David M. Rojas Gonzalez // davidr.info
- * @Last Modified time: 2019-03-25 17:11:42
+ * @Last Modified time: 2019-03-25 19:06:11
 */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchTrending } from '../actions/gifActions';
+import { fetchTrending, updatePage } from '../actions/gifActions';
 import { setMessage } from '../actions/headerActions';
 import DisplayCard from '../components/DisplayCard/DisplayCard';
 import Pagination from '../components/Pagination/Pagination';
@@ -18,6 +18,7 @@ class Home extends Component {
     componentDidMount(){
         const sideMenu = document.querySelector("ul");
         sideMenu.classList.remove("open");
+        this.props.updatePage(1);
         this.props.setMessage('All Gifs!');
         this.props.fetchTrending(this.props.currentPage);
     }
@@ -52,6 +53,7 @@ class Home extends Component {
 Home.propTypes = {
     setMessage: PropTypes.func.isRequired,
     fetchTrending: PropTypes.func.isRequired,
+    updatePage: PropTypes.func.isRequired,
     gifs: PropTypes.array.isRequired,
     currentPage: PropTypes.number.isRequired
 }
@@ -61,4 +63,4 @@ const mapStateToProps = state => ({
     currentPage: state.gifs.currentPage
 });
 
-export default connect(mapStateToProps, { fetchTrending, setMessage })(Home);
+export default connect(mapStateToProps, { fetchTrending, setMessage, updatePage })(Home);

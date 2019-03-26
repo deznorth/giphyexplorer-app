@@ -39,11 +39,15 @@ Below is a To-do list of the progress so far. You can also view the Trello Board
     - [ ] Description
     - [ ] Process
   - [ ] Structure and Style the page
-- [x] **Random Page**
+- [ ] **Random Page**
   - [x] Setup Route
   - [x] Get data from the API
   - [x] Display the data
+  - [ ] 'Fetch new result' button
 - [ ] **Implementing pagination**
+  - [x] Pagination for Home Page
+  - [ ] Pagination for Results Route
 
 ### Projected Features
 - [ ] Details Route
+- [ ] Displaying uploader nickname and avatar when available

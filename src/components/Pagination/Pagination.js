@@ -3,8 +3,18 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updatePage } from '../../actions/gifActions';
 import './Pagination.scss';
+import queryString from 'query-string';
 
 class Pagination extends Component {
+
+    componentDidMount(){
+        const qString = queryString.parse(window.location.search);
+        const queryPage = parseInt(qString.page);
+        
+        if(queryPage){
+            this.props.updatePage(queryPage);
+        }
+    }
 
     handlePageChange = (e) => {
         const clicked = e.target.textContent;
